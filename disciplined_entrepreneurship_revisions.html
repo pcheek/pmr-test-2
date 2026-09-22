@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disciplined Entrepreneurship Revisions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --plane:        #f9f9f7;
+    --surface:      #fcfcfb;
+    --surface-sunk: #f2f1ed;
+    --ink:          #0b0b0b;
+    --ink-2:        #52514e;
+    --ink-muted:    #898781;
+    --rule:         #e1e0d9;
+    --rule-strong:  #c3c2b7;
+    --accent:       #2a78d6;
+    --accent-ink:   #184f95;
+    --accent-sunk:  #eaf2fd;
+    --good:         #0ca30c;
+    --good-ink:     #006300;
+    --good-sunk:    #eaf6ea;
+    --warn:         #fab219;
+    --warn-ink:     #7a5405;
+    --warn-sunk:    #fdf4e0;
+    --crit:         #d03b3b;
+    --crit-ink:     #9c2020;
+    --crit-sunk:    #fbecec;
+    --ring:         rgba(11,11,11,0.10);
+    --sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --plane: #0d0d0d; --surface: #1a1a19; --surface-sunk: #232321;
+      --ink: #ffffff; --ink-2: #c3c2b7; --ink-muted: #898781;
+      --rule: #2c2c2a; --rule-strong: #383835;
+      --accent: #3987e5; --accent-ink: #9ec5f4; --accent-sunk: #14243a;
+      --good: #0ca30c; --good-ink: #0ca30c; --good-sunk: #10240f;
+      --warn: #fab219; --warn-ink: #eda100; --warn-sunk: #322611;
+      --crit: #e66767; --crit-ink: #e66767; --crit-sunk: #2e1515;
+      --ring: rgba(255,255,255,0.10);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --plane: #0d0d0d; --surface: #1a1a19; --surface-sunk: #232321;
+    --ink: #ffffff; --ink-2: #c3c2b7; --ink-muted: #898781;
+    --rule: #2c2c2a; --rule-strong: #383835;
+    --accent: #3987e5; --accent-ink: #9ec5f4; --accent-sunk: #14243a;
+    --good: #0ca30c; --good-ink: #0ca30c; --good-sunk: #10240f;
+    --warn: #fab219; --warn-ink: #eda100; --warn-sunk: #322611;
+    --crit: #e66767; --crit-ink: #e66767; --crit-sunk: #2e1515;
+    --ring: rgba(255,255,255,0.10);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--plane); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding-left: 20px; padding-right: 20px; padding-block: 0 96px; }
+
+  .masthead { border-bottom: 2px solid var(--ink); padding-block: 48px 22px; display: grid; gap: 16px; }
+  .eyebrow { font-family: var(--mono); font-size: 11.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-muted); margin: 0; }
+  h1 { font-weight: 700; font-size: clamp(30px, 6vw, 46px); line-height: 1.07; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+  .standfirst { font-family: var(--serif); font-size: clamp(17px, 2.4vw, 19px); line-height: 1.5; color: var(--ink-2); max-width: 64ch; margin: 0; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 8px 26px; font-family: var(--mono); font-size: 12px; color: var(--ink-muted); }
+  .meta-row b { color: var(--ink-2); font-weight: 500; }
+
+  .banner { margin-top: 26px; border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent); background: var(--warn-sunk); padding: 16px 18px; display: grid; gap: 8px; }
+  .banner h2 { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--warn-ink); margin: 0; display: flex; gap: 8px; align-items: center; }
+  .banner h2::before { content: ""; width: 9px; height: 9px; background: var(--warn); border-radius: 50%; flex: none; }
+  .banner p { margin: 0; font-size: 14.5px; color: var(--ink-2); max-width: 80ch; }
+  .banner p strong { color: var(--ink); font-weight: 600; }
+
+  /* summary of recommendations */
+  .summary { margin-top: 40px; border: 1px solid var(--rule); background: var(--surface); }
+  .summary caption, .summary > h2 { font-size: 15px; font-weight: 700; margin: 0; padding: 18px 20px 14px; border-bottom: 1px solid var(--rule); }
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 560px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); background: var(--surface-sunk); }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.step { font-family: var(--mono); white-space: nowrap; font-weight: 500; }
+
+  .conf { font-family: var(--mono); font-size: 10.5px; font-weight: 500; padding: 2px 7px; white-space: nowrap; border: 1px solid var(--rule-strong); }
+  .conf.hi { color: var(--good-ink); background: var(--good-sunk); border-color: color-mix(in srgb, var(--good) 40%, transparent); }
+  .conf.med { color: var(--warn-ink); background: var(--warn-sunk); border-color: color-mix(in srgb, var(--warn) 50%, transparent); }
+  .conf.lo { color: var(--ink-2); background: var(--surface-sunk); }
+
+  /* step blocks: the numbering is the DE step, which is real sequence */
+  .step-block { margin-top: 44px; background: var(--surface); border: 1px solid var(--rule); }
+  .step-head { display: grid; grid-template-columns: auto 1fr auto; gap: 6px 20px; align-items: center; padding: 20px 22px; border-bottom: 1px solid var(--rule); }
+  @media (max-width: 680px) { .step-head { grid-template-columns: auto 1fr; } .step-head .conf { grid-column: 2; justify-self: start; } }
+  .step-num { font-family: var(--sans); font-weight: 700; font-size: 30px; letter-spacing: -.03em; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1; }
+  .step-title { display: grid; gap: 2px; min-width: 0; }
+  .step-title .lab { font-family: var(--mono); font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-muted); }
+  .step-title h2 { font-size: 20px; font-weight: 700; margin: 0; letter-spacing: -.015em; line-height: 1.2; }
+
+  .step-body { padding: 4px 22px 24px; display: grid; gap: 0; }
+  .pane { padding-block: 20px; border-bottom: 1px solid var(--rule); display: grid; gap: 10px; }
+  .pane:last-child { border-bottom: 0; padding-bottom: 4px; }
+  .pane h3 { font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; margin: 0; display: flex; align-items: center; gap: 8px; }
+  .pane h3::before { content: ""; width: 3px; height: 13px; flex: none; }
+  .pane.was h3 { color: var(--ink-muted); }
+  .pane.was h3::before { background: var(--rule-strong); }
+  .pane.now h3 { color: var(--accent-ink); }
+  .pane.now h3::before { background: var(--accent); }
+  .pane.why h3 { color: var(--ink-2); }
+  .pane.why h3::before { background: var(--ink-muted); }
+  .pane.risk h3 { color: var(--crit-ink); }
+  .pane.risk h3::before { background: var(--crit); }
+
+  .pane p { margin: 0; font-family: var(--serif); font-size: 16.5px; line-height: 1.58; color: var(--ink-2); max-width: 70ch; }
+  .pane.was p { font-family: var(--sans); font-size: 14.5px; color: var(--ink-muted); }
+  .pane p strong { color: var(--ink); font-weight: 600; }
+  .pane ul, .pane ol { margin: 0; padding-left: 20px; display: grid; gap: 7px; font-size: 15px; color: var(--ink-2); max-width: 72ch; }
+  .pane li strong { color: var(--ink); font-weight: 600; }
+  .pane li::marker { color: var(--ink-muted); }
+
+  .ev { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ev span { font-family: var(--mono); font-size: 10.5px; font-weight: 500; padding: 2px 8px; color: var(--accent-ink); background: var(--accent-sunk); border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent); }
+
+  blockquote { margin: 0; font-family: var(--serif); font-size: 16px; font-style: italic; line-height: 1.48; color: var(--ink); padding-left: 14px; border-left: 2px solid var(--rule-strong); max-width: 70ch; }
+  blockquote cite { display: block; font-style: normal; font-family: var(--mono); font-size: 11.5px; color: var(--ink-muted); margin-top: 6px; }
+
+  .callout { border: 1px solid var(--rule); border-left: 3px solid var(--crit); background: var(--crit-sunk); padding: 14px 16px; display: grid; gap: 7px; max-width: 74ch; }
+  .callout.pos { border-left-color: var(--good); background: var(--good-sunk); }
+  .callout h4 { font-size: 14px; font-weight: 700; margin: 0; }
+  .callout p { margin: 0; font-family: var(--sans); font-size: 14px; color: var(--ink-2); }
+  .callout p strong { color: var(--ink); }
+
+  .section-head { margin-block: 60px 0; padding-bottom: 10px; border-bottom: 1px solid var(--rule-strong); display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+  .section-head h2 { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin: 0; }
+  .section-head span { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); }
+
+  .seq { margin-top: 24px; display: grid; gap: 12px; counter-reset: s; }
+  .seq li { list-style: none; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; background: var(--surface); border: 1px solid var(--rule); padding: 16px 18px; }
+  .seq li::before { counter-increment: s; content: counter(s); font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent-ink); background: var(--accent-sunk); border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent); width: 26px; height: 26px; display: grid; place-items: center; }
+  .seq .t { display: grid; gap: 5px; }
+  .seq h3 { font-size: 15.5px; font-weight: 700; margin: 0; }
+  .seq p { margin: 0; font-size: 14.5px; color: var(--ink-2); max-width: 74ch; }
+  .seq p strong { color: var(--ink); font-weight: 600; }
+
+  footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 11.5px; color: var(--ink-muted); display: grid; gap: 6px; }
+  a { color: var(--accent-ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  @media print { body { background: #fff; } .step-block { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Strategic Revisions · Disciplined Entrepreneurship · 2026-09-22</p>
+  <h1>Disciplined Entrepreneurship Revisions</h1>
+  <p class="standfirst">Recommended changes to the business plan, organised by the step each one belongs to. Ten synthetic interviews invalidated four of seven key assumptions and surfaced one arithmetic error that outranks all of them. Six steps need revision. One needs to be added.</p>
+  <div class="meta-row">
+    <span><b>Steps revised</b> 3, 5, 8, 15, 20, 24</span>
+    <span><b>Step added</b> 9 (Identify Next 10)</span>
+    <span><b>Evidence</b> 10 synthetic interviews</span>
+    <span><b>High confidence</b> 3 of 7</span>
+  </div>
+</header>
+
+<section class="banner">
+  <h2>What this document can and cannot justify</h2>
+  <p>Every recommendation here rests on synthetic interviews, which are structured reasoning over premises already held rather than evidence from the market. <strong>Do not make an irreversible commitment on the strength of anything below.</strong> Each step carries a confidence rating and a named real-world test. The high-confidence items are the ones where the finding is a fact about the world (account structures, transfer mechanics) rather than a claim about preference. The source business plan was unavailable, so Step 3 and Step 5 premises were reconstructed and recorded in <code>research/00_source_basis.md</code>.</p>
+</section>
+
+<section class="summary">
+  <h2>Summary of recommendations</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Step</th><th>Recommendation</th><th>Driver</th><th>Confidence</th></tr></thead>
+      <tbody>
+        <tr><td class="step">Step 3</td><td>Add capturable assets and a dated trigger event to the End User Profile. Drop total investable assets as the sizing variable.</td><td>29.3% capturable ratio; 10 of 10 lack a forcing function</td><td><span class="conf hi">High</span></td></tr>
+        <tr><td class="step">Step 5</td><td>Split the persona. Maya Chen as written is two different buyers and neither is the largest segment.</td><td>Jargon produced three distinct responses, not one</td><td><span class="conf med">Medium</span></td></tr>
+        <tr><td class="step">Step 8</td><td>Requantify the value proposition in dollars of tax labour and error, not basis points of fee saving.</td><td>0 of 10 ranked fees first; 2 of 10 priced their own workaround</td><td><span class="conf hi">High</span></td></tr>
+        <tr><td class="step">Step 9</td><td>Add this step. The Next 10 list should be built on trigger timing, not on persona fit.</td><td>Deadline absence explained 8 of 10 non-conversions</td><td><span class="conf med">Medium</span></td></tr>
+        <tr><td class="step">Step 15</td><td>Abandon 25 bps. Move to a flat fee in the $200 to $300 band, below the household approval threshold.</td><td>1 of 10 accepts bps; 8 reject on structure; threshold near $300</td><td><span class="conf hi">High</span></td></tr>
+        <tr><td class="step">Step 20</td><td>Retire ka-002 and ka-003 as written, restate ka-005, and add three assumptions the study exposed.</td><td>4 of 7 invalidated; 3 new assumptions were never written down</td><td><span class="conf hi">High</span></td></tr>
+        <tr><td class="step">Step 24</td><td>Treat the pre-transaction notice as a candidate follow-on product, not a feature.</td><td>8 of 10 asked for it unprompted; every four-figure price came from non-buyers</td><td><span class="conf lo">Low</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- STEP 3 -->
+<article class="step-block">
+  <div class="step-head">
+    <div class="step-num">03</div>
+    <div class="step-title"><span class="lab">Step 3</span><h2>End User Profile</h2></div>
+    <span class="conf hi">High confidence</span>
+  </div>
+  <div class="step-body">
+    <div class="pane was">
+      <h3>As written</h3>
+      <p>Salaried professionals aged 28 to 45, household income $75K to $250K+, investable assets $25K to $500K across 401(k), RSU and brokerage accounts, self-directed, fee-aware, consuming peer financial media.</p>
+    </div>
+    <div class="pane now">
+      <h3>Recommended revision</h3>
+      <p>The profile is not wrong, it is <strong>unactionable in two specific ways</strong>, and both are fixable by changing which variables define it.</p>
+      <ol>
+        <li><strong>Replace "investable assets $25K to $500K" with "capturable assets."</strong> An active-employer 401(k) or 403(b) cannot be transferred at any price. Across the cohort, capturable assets were <strong>29.3%</strong> of stated assets. A prospect describing $480K may represent $127K of billable base. Stated assets are not a sizing variable, they are a vanity metric.</li>
+        <li><strong>Add a dated trigger event as a defining screen, not a nice-to-have.</strong> The profile currently describes who someone is. It needs to describe when they are reachable: within 90 days of an employer change, a vest, a tender offer, or an advisor's departure. The one subject with no trigger event converted on nothing, at any price.</li>
+        <li><strong>Add "taxable-to-tax-deferred ratio" as a qualifying screen.</strong> One subject held 96% of assets in tax-deferred accounts, which makes the core value proposition structurally irrelevant to him. He is otherwise a perfect profile match.</li>
+        <li><strong>Drop "fee-aware" as a defining characteristic.</strong> It did not predict anything. Two subjects were not fee-sensitive at all, one knew her fees precisely and accepted them, and the most fee-hostile subject was the least likely to buy.</li>
+      </ol>
+    </div>
+    <div class="pane why">
+      <h3>Evidence</h3>
+      <div class="ev"><span>29.3% capturable ratio</span><span>3.4x revenue overstatement</span><span>10 of 10 no forcing function</span><span>1 of 10 no tax surface</span></div>
+      <blockquote>Twenty-five basis points of four-eighty assumes you have four-eighty. You can't have four-eighty.<cite>Kate Hollis, 45, Late Majority. Two subjects corrected the interviewer's arithmetic independently.</cite></blockquote>
+    </div>
+    <div class="pane risk">
+      <h3>Before you commit</h3>
+      <p>The capturable ratio is <strong>a fact about account structures, so do not source it from interviews.</strong> Pull the real distribution from plan data, aggregator benchmarks, or a screener on your own waitlist. Ten synthetic subjects give you a hypothesis and four of the ten figures were estimated rather than stated. If the real ratio is 50% rather than 29%, the pricing conclusion in Step 15 changes materially.</p>
+    </div>
+  </div>
+</article>
+
+<!-- STEP 5 -->
+<article class="step-block">
+  <div class="step-head">
+    <div class="step-num">05</div>
+    <div class="step-title"><span class="lab">Step 5</span><h2>Persona</h2></div>
+    <span class="conf med">Medium confidence</span>
+  </div>
+  <div class="step-body">
+    <div class="pane was">
+      <h3>As written</h3>
+      <p>Maya Chen. Bogleheads-leaning, fee-and-tax-drag averse, hostile to jargon, skeptical of the 1% AUM advisor, expects to self-serve, blocked by switching cost.</p>
+    </div>
+    <div class="pane now">
+      <h3>Recommended revision</h3>
+      <p>Maya as written bundles two buyers with opposite needs, and the bundle hides the largest segment entirely. <strong>Split her, and be explicit about which one you are building for.</strong></p>
+      <ul>
+        <li><strong>Maya A, the Quantified Skeptic.</strong> Has a real workaround costing 16 to 45 hours a year with documented losses. Wants inspectable rules and a published methodology. Rejects percentage pricing on principle even when it is cheaper. Prices from the bottom up and will pay $350 to $2,200. This is the persona the product currently fits, and there are roughly two of her in ten.</li>
+        <li><strong>Maya B, the Quiet Deferrer.</strong> Cannot say what she currently pays. Believes tax optimisation is for wealthy people. Meets jargon with <strong>self-blame rather than suspicion</strong>, and a methodology document repels her as evidence the product is not for her. Needs peer proof and plain dollars. Will pay $96 and needs to be told the number to feel relief rather than suspicion.</li>
+      </ul>
+      <p>These two require <strong>opposite marketing assets.</strong> The same rigour that closes Maya A loses Maya B. Building for the bundle produces a product that lands with neither.</p>
+      <p>Also correct one premise outright: the plan assumes jargon reads as extraction. It produced <strong>three distinct responses</strong> across the cohort. Six read it as extraction, one read it as professional competence and was reassured, and one read it as her own inadequacy.</p>
+    </div>
+    <div class="pane why">
+      <h3>Evidence</h3>
+      <div class="ev"><span>2 of 10 fit Maya A</span><span>3 of 10 fit Maya B</span><span>1 of 10 reassured by jargon</span><span>1 of 10 repelled by methodology</span></div>
+      <blockquote>I'm sure I'm paying something. I've just never been able to find out what, and at some point I stopped looking because it made me feel stupid.<cite>Grace Lim, 33, Early Majority. The failure mode the persona does not anticipate.</cite></blockquote>
+    </div>
+    <div class="pane risk">
+      <h3>Before you commit</h3>
+      <p>This split rests on <strong>persona design as much as on findings</strong>, since the cohort was deliberately built to span the adoption curve. The synthetic round cannot tell you the real mix of Maya A to Maya B in the market, and that mix decides which product you build. Test it cheaply: run two landing pages, one leading with a methodology document and one leading with a single dollar figure, and compare conversion. Do not pick a persona from this document alone.</p>
+    </div>
+  </div>
+</article>
+
+<!-- STEP 8 -->
+<article class="step-block">
+  <div class="step-head">
+    <div class="step-num">08</div>
+    <div class="step-title"><span class="lab">Step 8</span><h2>Quantify the Value Proposition</h2></div>
+    <span class="conf hi">High confidence</span>
+  </div>
+  <div class="step-body">
+    <div class="pane was">
+      <h3>As written</h3>
+      <p>Implied value is the fee saving against a 1% AUM incumbent, plus tax optimisation, positioned on incentive alignment.</p>
+    </div>
+    <div class="pane now">
+      <h3>Recommended revision</h3>
+      <p>Requantify in the units the customer actually uses, which are <strong>hours and dollars of error, not basis points of fee saving.</strong> Three changes.</p>
+      <ol>
+        <li><strong>Lead with tax labour and tax error, not fee reduction.</strong> The two subjects with real workarounds quantified them without prompting: 16 to 17 hours a year with $1,800 of disallowed losses in one case, and 40 to 45 hours a year with <strong>$6,400 permanently destroyed</strong> under the wash sale rule in the other. Both then set their own price from that number. Fee saving produced no such calculation from anyone.</li>
+        <li><strong>Retire the incentive-alignment pitch as a headline.</strong> It landed as nothing for four subjects. One called it "table stakes, it's not a product." For the advisor-loyal subject it landed worse than nothing, as a competitor badmouthing a person he likes. It is a reason to trust you once someone is already considering you, which makes it a trust asset rather than a value proposition.</li>
+        <li><strong>Add the quantified value of not being surprised.</strong> The largest single dollar figure volunteered in the study was for advance notice, not for management: $2,000 a year for a dated projection of ISO and AMT exposure. The value of <em>knowing in advance</em> priced higher than the value of <em>being managed</em> for every subject who named a four-figure number.</li>
+      </ol>
+      <p>Honest statement of the quantified value, as the evidence supports it: <strong>for the two subjects it fits, roughly $1,800 to $2,200 a year in recovered labour and avoided error. For the other eight, no quantifiable value was established at all.</strong></p>
+    </div>
+    <div class="pane why">
+      <h3>Evidence</h3>
+      <div class="ev"><span>0 of 10 ranked fees first</span><span>7 of 10 no reachable tax surface</span><span>4 of 10 alignment pitch landed as nothing</span><span>3 of 10 had any workaround</span></div>
+      <blockquote>You're not competing with an advisor. You're competing with my spreadsheet, and my spreadsheet is free and I'm fond of it.<cite>Priya Raghavan, 31, Innovator</cite></blockquote>
+    </div>
+    <div class="pane risk">
+      <h3>Before you commit</h3>
+      <p>Both bottom-up valuations came from subjects who <strong>have never had to actually part with the money.</strong> A synthetic subject's willingness to pay costs nothing to state. Validate by taking deposits or running a paid pilot, and treat the $1,800 to $2,200 figure as an upper bound until someone has paid it.</p>
+    </div>
+  </div>
+</article>
+
+<!-- STEP 9 -->
+<article class="step-block">
+  <div class="step-head">
+    <div class="step-num">09</div>
+    <div class="step-title"><span class="lab">Step 9 · missing from the plan</span><h2>Identify Your Next 10 Customers</h2></div>
+    <span class="conf med">Medium confidence</span>
+  </div>
+  <div class="step-body">
+    <div class="pane was">
+      <h3>As written</h3>
+      <p>Not present in the reconstructed plan.</p>
+    </div>
+    <div class="pane now">
+      <h3>Recommended addition</h3>
+      <p>This step is missing and the study argues it is the most important one to add, because the single most consistent finding was about <strong>timing rather than fit.</strong></p>
+      <p>Build the Next 10 list on <strong>trigger proximity, not persona match.</strong> Stranded balances in this cohort sat for 19 months, 3 years, 6 years and 7 years with no obstacle of any kind. Nothing was blocking the move and nothing was starting it. That means the qualifying question for the list is not "does this person look like Maya" but "is this person inside a 90-day window."</p>
+      <p>Concretely, the list should be sourced from four dated events:</p>
+      <ul>
+        <li><strong>An employer change</strong> with a plan left behind. Most common trigger in the cohort.</li>
+        <li><strong>A vest or tender offer with a known date.</strong> Two subjects had one inside 90 days and both were the closest to converting.</li>
+        <li><strong>An advisor's retirement or handoff.</strong> The advisor-loyal subject was in market for exactly four months for this reason and no other.</li>
+        <li><strong>A first tax-season surprise</strong> in a taxable account, which is the moment the labour becomes visible.</li>
+      </ul>
+      <p>Screen out, explicitly: anyone with no dated event, anyone whose assets are predominantly in an active-employer plan, and anyone who refuses account linking. That is <strong>four of ten in this cohort</strong> and excluding them early is a gain, not a loss.</p>
+    </div>
+    <div class="pane why">
+      <h3>Evidence</h3>
+      <div class="ev"><span>10 of 10 no forcing function</span><span>ka-002 invalidated 9 of 10</span><span>1 of 10 had no trigger at all</span></div>
+      <blockquote>Nothing's stopped it. Nothing's started it. Those are different sentences and yours assumed the first one.<cite>Wes Tanaka, 42, Skeptic, on the question's own flawed premise</cite></blockquote>
+    </div>
+    <div class="pane risk">
+      <h3>Before you commit</h3>
+      <p>Deadline absence is the study's strongest signal and <strong>also its most self-serving</strong>, because it points at a problem marketing can solve rather than one requiring a different product. Verify it with behaviour, not recall: reach two matched cohorts, one inside 30 days of a trigger and one outside any window, and compare conversion. If the gap is small, friction was the real story and this document talked you out of the right answer.</p>
+    </div>
+  </div>
+</article>
+
+<!-- STEP 15 -->
+<article class="step-block">
+  <div class="step-head">
+    <div class="step-num">15</div>
+    <div class="step-title"><span class="lab">Step 15</span><h2>Design a Business Model</h2></div>
+    <span class="conf hi">High confidence</span>
+  </div>
+  <div class="step-body">
+    <div class="pane was">
+      <h3>As written</h3>
+      <p>Two candidate price points: $96 per year flat, or 25 bps of assets under management, positioned against a 1% AUM incumbent.</p>
+    </div>
+    <div class="pane now">
+      <h3>Recommended revision</h3>
+      <p><strong>Abandon the 25 bps option entirely, and raise the flat fee.</strong> The evidence against the percentage is not about the amount, and that distinction is what makes it decisive.</p>
+      <ol>
+        <li><strong>Percentage pricing is rejected on structure by 8 of 10.</strong> Two subjects preferred the flat fee at balances where flat cost them <em>more</em>, which is the signature of a principled objection rather than an economic one. One foreclosed the retreat explicitly: <em>"if you told me it was one basis point I'd say the same thing."</em> Reducing the percentage does not address the objection.</li>
+        <li><strong>$96 is too low in two directions at once.</strong> Six subjects read it as a signal of low capability rather than a bargain, and two preferred the more expensive option on signaling grounds alone. Meanwhile the subjects who genuinely want the product benchmarked $350 to $500 and $1,800 to $2,200 from the bottom up. The number is simultaneously too small to look credible and too small to capture the value.</li>
+        <li><strong>Set the flat fee at $200 to $300 a year.</strong> This is the window the plan never tested. It sits above the low-capability signal, inside what the workaround-holders will pay, and critically <strong>below the household approval threshold</strong>, which two subjects independently placed near $300 and near $500. Crossing that line converts a personal decision into a scheduled conversation, and the failure mode above it is deferral rather than rejection.</li>
+        <li><strong>Price in dollars, never in basis points.</strong> Seven of ten called basis points an illegible unit. One subject could not convert the percentage without a calculator and found the opacity itself alarming, which is the exact grievance the positioning claims to solve.</li>
+        <li><strong>Disclose all ancillary revenue on the pricing page.</strong> Three subjects independently asked what sits behind the flat fee: cash-sweep spread, securities lending, order flow, data. Three more expect the flat fee to become a percentage later. An undisclosed spread reintroduces the misalignment the whole thesis rests on rejecting.</li>
+      </ol>
+      <div class="callout">
+        <h4>The revenue arithmetic, stated plainly</h4>
+        <p>Across these ten subjects, 25 bps of <strong>stated</strong> assets reads as $7,020 a year. Against capturable assets it is $2,060. <strong>Actually collectible, from the one subject who accepts the structure, it is $222.</strong> A flat $96 collects $576 from the six who convert. At $240 flat, the same six would yield $1,440, and the two bottom-up valuers said they would pay more than that.</p>
+      </div>
+    </div>
+    <div class="pane why">
+      <h3>Evidence</h3>
+      <div class="ev"><span>1 of 10 accepts 25 bps</span><span>8 of 10 reject percentage on structure</span><span>7 of 10 bps illegible</span><span>6 of 10 $96 signals low capability</span><span>5 of 10 approval threshold</span></div>
+      <blockquote>It isn't the money. It's that you'd be charging me more each year for the same computation, and the mechanism by which your revenue grows is my savings rate. I would be paying you a royalty on my own discipline.<cite>Sofia Marchetti, 34, Early Adopter</cite></blockquote>
+    </div>
+    <div class="pane risk">
+      <h3>Before you commit</h3>
+      <p>Stated willingness to pay is <strong>the least reliable output a synthetic interview can produce</strong>, and the founder asking makes it worse in both directions. The $200 to $300 recommendation is an inference from two volunteered thresholds and two bottom-up valuations, which is thin. Run a real pricing test at $96, $240 and $480 annually and measure conversion and time-to-decision by household type. If the approval threshold is real, time-to-decision should jump discontinuously at the line rather than rising smoothly. And take deposits, because no price in this document has been paid by anyone.</p>
+    </div>
+  </div>
+</article>
+
+<!-- STEP 20 -->
+<article class="step-block">
+  <div class="step-head">
+    <div class="step-num">20</div>
+    <div class="step-title"><span class="lab">Step 20</span><h2>Identify Your Key Assumptions</h2></div>
+    <span class="conf hi">High confidence</span>
+  </div>
+  <div class="step-body">
+    <div class="pane was">
+      <h3>As written</h3>
+      <p>ka-001 Trust in Automation · ka-002 Switching Friction and ACATS · ka-003 Primary Pain of Opaque Fees and Jargon · ka-004 Tax Optimization Value · ka-005 Pricing and 25 bps Value Capture · ka-006 Onboarding Autonomy · ka-007 Decision-Making Unit.</p>
+    </div>
+    <div class="pane now">
+      <h3>Recommended revision</h3>
+      <p>Four of the seven were invalidated, one was validated, and three assumptions that matter more than any of them were never written down. Revise the list as follows.</p>
+      <ul>
+        <li><strong>Retire ka-002 as written.</strong> Invalidated 9 of 10. Replace with <strong>ka-002r, Trigger Dependency:</strong> conversion requires a dated event within 90 days, and absent one, no reduction in switching friction produces a transfer.</li>
+        <li><strong>Retire ka-003 as written.</strong> Invalidated 7 of 10, with zero subjects ranking fees first. Replace with <strong>ka-003r, Fees as Veto:</strong> fee opacity does not motivate purchase but does disqualify providers, so fees must be cleared as a gate rather than sold as a benefit.</li>
+        <li><strong>Restate ka-005.</strong> The current form bundles "is the price acceptable" with "is this structure acceptable" and the two got opposite answers. Split into <strong>ka-005a Price Level</strong> and <strong>ka-005b Price Structure.</strong></li>
+        <li><strong>Keep ka-001, ka-004, ka-006 and ka-007, all with amendments.</strong> ka-001 needs to distinguish inspectable from accountable, which split the cohort roughly evenly. ka-004 needs a reachability precondition, since seven subjects had no surface the product touches. ka-006 needs to name four distinct refusal shapes rather than one. ka-007 held, but note the sample was built with four to five co-approvers, so it is partly designed in and needs real couples.</li>
+      </ul>
+      <p><strong>Add three assumptions the study exposed:</strong></p>
+      <ol>
+        <li><strong>ka-008 Capturable Asset Ratio.</strong> That a viable share of a prospect's stated assets can actually be transferred. Measured at 29.3% here. This assumption sets revenue per customer and currently has no owner.</li>
+        <li><strong>ka-009 Household Approval Threshold.</strong> That an annual price below roughly $300 stays inside personal discretion and never triggers a second decision maker.</li>
+        <li><strong>ka-010 Price Signalling.</strong> That the price is high enough to signal capability. Six of ten read $96 as evidence that nobody is looking at the account.</li>
+      </ol>
+      <div class="callout pos">
+        <h4>The one that held</h4>
+        <p>ka-007 was the clean validation, and the useful part is not that the co-approver exists but <strong>what they ask.</strong> In every household it was institutional legitimacy, never fees and never performance: who are they, what happens if they go under, is there a person or a queue. Three households asked it in nearly identical words. It is cheaply answerable and currently unanswered.</p>
+      </div>
+    </div>
+    <div class="pane why">
+      <h3>Evidence</h3>
+      <div class="ev"><span>4 of 7 invalidated</span><span>1 of 7 validated</span><span>2 of 7 partial</span><span>3 new assumptions</span></div>
+    </div>
+    <div class="pane risk">
+      <h3>Before you commit</h3>
+      <p>An invalidation from a synthetic cohort is <strong>not the same as a false assumption.</strong> Two personas were deliberately built to break specific assumptions, and they broke them, which is a property of the design. Treat ka-002 and ka-003 as demoted and under active test rather than dead, and re-run both against real prospects before removing them from the plan permanently.</p>
+    </div>
+  </div>
+</article>
+
+<!-- STEP 24 -->
+<article class="step-block">
+  <div class="step-head">
+    <div class="step-num">24</div>
+    <div class="step-title"><span class="lab">Step 24</span><h2>Develop a Product Plan</h2></div>
+    <span class="conf lo">Low confidence</span>
+  </div>
+  <div class="step-body">
+    <div class="pane was">
+      <h3>As written</h3>
+      <p>Automated tax-aware portfolio management as the single product, with self-serve onboarding.</p>
+    </div>
+    <div class="pane now">
+      <h3>Recommended revision</h3>
+      <p>The follow-on product may be larger than the core product, and the evidence for it is uncomfortable enough to be worth taking seriously.</p>
+      <p><strong>Eight of ten subjects asked, unprompted, for advance plain-language dollar-denominated notice of what is about to happen to their money.</strong> Four reached independently for the same phrase: <em>four sentences.</em> It is not a portfolio management need, it is a comprehension-and-timing need, and it appeared as a request to be told before the fact, in dollars, what a vest or a transfer or a December sale will cost.</p>
+      <p>The part that should give you pause: <strong>every four-figure price in this study was volunteered by one of the four subjects who declined to buy the product.</strong> One offered $2,000 a year, signed in the room, for a dated October projection of her ISO and AMT exposure with a human name attached. Another offered $500 once for a written plan and explicitly nothing in year two. That is roughly six times what the automated product earns from the same people, for a capability that does not currently exist.</p>
+      <p>Two concrete implications for the product plan:</p>
+      <ul>
+        <li><strong>Sequence the notice ahead of, or alongside, full management.</strong> It requires read-only access rather than a transfer, which sidesteps the two hardest blockers in the study at once: the absent forcing function and the linking refusal.</li>
+        <li><strong>Build the household invitation flow.</strong> One subject was maximally willing to link her own accounts and the product still failed, because the accounts that mattered were her spouse's and not hers to give. This is the only one of the four refusal shapes that product design can actually solve.</li>
+      </ul>
+    </div>
+    <div class="pane why">
+      <h3>Evidence</h3>
+      <div class="ev"><span>8 of 10 asked unprompted</span><span>4 used the phrase "four sentences"</span><span>$2,000/yr offered by a non-buyer</span><span>1 of 10 structurally blocked</span></div>
+      <blockquote>I was completely willing. Zero security objection. And the product still fails, because the accounts that would make it worth having are not mine to give.<cite>Anika Deshmukh, 36, Early Majority</cite></blockquote>
+    </div>
+    <div class="pane risk">
+      <h3>Before you commit</h3>
+      <p>Rated low confidence deliberately, and the reason is structural. <strong>A synthetic subject offering $2,000 for a product that does not exist is the single least trustworthy output this method can produce.</strong> There is no cost to the offer, no competing claim on the money, and no spouse to convince. Treat it as an interesting hypothesis worth one week of real conversations, not as a pivot. The honest test is a paid letter of intent, or nothing.</p>
+    </div>
+  </div>
+</article>
+
+<div class="section-head">
+  <h2>What to do next</h2>
+  <span>In order</span>
+</div>
+
+<ol class="seq">
+  <li><div class="t"><h3>Get the capturable-asset ratio from data, this week</h3><p>It is a fact about account structures, not a preference, so it needs no interviews. It sets revenue per customer and it is currently the largest unknown in the model. <strong>If the real ratio is near 29%, the 25 bps model does not work at any acceptance rate.</strong></p></div></li>
+  <li><div class="t"><h3>Run the pricing test at $96, $240 and $480 flat</h3><p>Three price points, real landing pages, measure conversion and time-to-decision. <strong>Do not include a percentage option.</strong> The structural objection is well enough established that testing it again wastes the sample.</p></div></li>
+  <li><div class="t"><h3>Answer the co-approver's question in two sentences</h3><p>Custodian name, what happens if the company fails, person or queue. Three households asked it in nearly identical words and it is the cheapest gap in this document to close. Put it on the pricing page.</p></div></li>
+  <li><div class="t"><h3>Recruit real prospects on trigger proximity and time-since-firing</h3><p>Inside and outside a 90-day trigger window, and at 0 to 6 months, 1 to 2 years, and 3 years plus since firing an advisor. Those two axes test the study's two most actionable hypotheses, and both currently rest on single self-reports.</p></div></li>
+  <li><div class="t"><h3>Interview five real couples jointly</h3><p>Every co-approver finding here is one partner's account of the other partner's reasoning, which is the weakest testimony in the study. ka-007 is the only assumption that survived and it is the one most likely to be an artefact of sample design.</p></div></li>
+  <li><div class="t"><h3>Take a deposit from anyone who says yes</h3><p>No willingness-to-pay figure in this document, including the $2,000 one, should change a decision until somebody has actually parted with money.</p></div></li>
+</ol>
+
+<footer>
+  <div>Strategic revisions derived from 10 synthetic interviews conducted 2026-09-22 · confidence ratings reflect how much of each finding is fact about the world versus claim about preference</div>
+  <div>Sources: research/00_source_basis.md · research/01_synthetic_personas.md · research/02_interview_script.md · research/transcripts/ · research/aggregates.json · research_dashboard.md</div>
+  <div>Synthetic research produces hypotheses, not evidence. Nothing here justifies an irreversible commitment.</div>
+</footer>
+
+</div>
+</body>
+</html>

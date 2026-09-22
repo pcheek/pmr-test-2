@@ -1,0 +1,312 @@
+{
+  "assumptions": [
+    {
+      "id": "ka-001",
+      "name": "Trust in Automation",
+      "validated": 2,
+      "partial": 5,
+      "invalidated": 3,
+      "verdict": "Partially Validated",
+      "reason": "Only Priya and Sofia can say how they know their automation works; six cannot verify anything beyond 'the balance goes up', and three require a named human for accountability."
+    },
+    {
+      "id": "ka-002",
+      "name": "Switching Friction / ACATS",
+      "validated": 0,
+      "partial": 1,
+      "invalidated": 9,
+      "verdict": "Invalidated",
+      "reason": "All ten said nothing mechanical is stopping their stranded asset. The binding constraint is the absence of a deadline, not the presence of friction."
+    },
+    {
+      "id": "ka-003",
+      "name": "Primary Pain of Opaque Fees and Jargon",
+      "validated": 0,
+      "partial": 3,
+      "invalidated": 7,
+      "verdict": "Invalidated",
+      "reason": "Zero subjects ranked fees first in Q3. Fees function as a purchase veto or are absent entirely, and one subject finds jargon reassuring."
+    },
+    {
+      "id": "ka-004",
+      "name": "Tax Optimization Value",
+      "validated": 2,
+      "partial": 1,
+      "invalidated": 7,
+      "verdict": "Invalidated",
+      "reason": "Only Priya and Sofia have both a securities tax surface and a workaround. Seven have no reachable surface, no awareness of one, or complexity beyond automation's scope."
+    },
+    {
+      "id": "ka-005",
+      "name": "Pricing and 25 bps Value Capture",
+      "validated": 0,
+      "partial": 7,
+      "invalidated": 3,
+      "verdict": "Partially Validated",
+      "reason": "$96 flat is broadly acceptable but only 1 of 10 would actually pay 25 bps and 4 of 10 pay nothing at either price; no subject validated both halves of the assumption."
+    },
+    {
+      "id": "ka-006",
+      "name": "Onboarding Autonomy",
+      "validated": 4,
+      "partial": 1,
+      "invalidated": 5,
+      "verdict": "Invalidated",
+      "reason": "Five fail at the account-linking step: two hard refusals, one structural inability to authorise a spouse's accounts, one supervision requirement, one liability and incumbent-advisor gate."
+    },
+    {
+      "id": "ka-007",
+      "name": "Decision-Making Unit / Spousal Co-approver",
+      "validated": 5,
+      "partial": 1,
+      "invalidated": 4,
+      "verdict": "Validated",
+      "reason": "Five have a real, exercised veto with a standing venue and the co-approver's question is institutional legitimacy rather than price; caveat, the sample was built with four to five co-approvers so the result is partly designed in."
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Priya Raghavan",
+      "segment": "Innovator",
+      "stated_assets": 420000,
+      "capturable_assets": 110000,
+      "capturable_estimated": false,
+      "wtp_structure": "$96 flat",
+      "wtp_annual": 96
+    },
+    {
+      "name": "Daniel Okonkwo",
+      "segment": "Innovator",
+      "stated_assets": 95000,
+      "capturable_assets": 89000,
+      "capturable_estimated": false,
+      "wtp_structure": "25 bps",
+      "wtp_annual": 222
+    },
+    {
+      "name": "Sofia Marchetti",
+      "segment": "Early Adopter",
+      "stated_assets": 500000,
+      "capturable_assets": 207000,
+      "capturable_estimated": false,
+      "wtp_structure": "$96 flat",
+      "wtp_annual": 96
+    },
+    {
+      "name": "Marcus Webb",
+      "segment": "Early Adopter",
+      "stated_assets": 310000,
+      "capturable_assets": 112000,
+      "capturable_estimated": true,
+      "wtp_structure": "$96 flat",
+      "wtp_annual": 96
+    },
+    {
+      "name": "Grace Lim",
+      "segment": "Early Majority",
+      "stated_assets": 165000,
+      "capturable_assets": 79000,
+      "capturable_estimated": true,
+      "wtp_structure": "$96 flat",
+      "wtp_annual": 96
+    },
+    {
+      "name": "Trevor Nash",
+      "segment": "Early Majority",
+      "stated_assets": 275000,
+      "capturable_assets": 61000,
+      "capturable_estimated": false,
+      "wtp_structure": "1% AUM",
+      "wtp_annual": 0
+    },
+    {
+      "name": "Anika Deshmukh",
+      "segment": "Early Majority",
+      "stated_assets": 198000,
+      "capturable_assets": 39000,
+      "capturable_estimated": true,
+      "wtp_structure": "$96 flat",
+      "wtp_annual": 96
+    },
+    {
+      "name": "Brandon Ruiz",
+      "segment": "Late Majority",
+      "stated_assets": 340000,
+      "capturable_assets": 0,
+      "capturable_estimated": true,
+      "wtp_structure": "free-DIY",
+      "wtp_annual": 0
+    },
+    {
+      "name": "Kate Hollis",
+      "segment": "Late Majority",
+      "stated_assets": 480000,
+      "capturable_assets": 127000,
+      "capturable_estimated": false,
+      "wtp_structure": "1% AUM",
+      "wtp_annual": 0
+    },
+    {
+      "name": "Wes Tanaka",
+      "segment": "Skeptic",
+      "stated_assets": 25000,
+      "capturable_assets": 0,
+      "capturable_estimated": true,
+      "wtp_structure": "free-DIY",
+      "wtp_annual": 0
+    }
+  ],
+  "wtp_structure_counts": {
+    "$96 flat": 5,
+    "25 bps": 1,
+    "free-DIY": 2,
+    "1% AUM": 2,
+    "would not buy": 0
+  },
+  "objections": [
+    {
+      "objection": "Absence of a forcing function: nothing mechanical blocks the move and nothing makes it happen",
+      "count": 10,
+      "subjects": ["Priya Raghavan", "Daniel Okonkwo", "Sofia Marchetti", "Marcus Webb", "Grace Lim", "Trevor Nash", "Anika Deshmukh", "Brandon Ruiz", "Kate Hollis", "Wes Tanaka"]
+    },
+    {
+      "objection": "Account linking is an obstacle: hard refusal, structural inability, supervision requirement or disclosure checklist",
+      "count": 9,
+      "subjects": ["Priya Raghavan", "Sofia Marchetti", "Marcus Webb", "Grace Lim", "Trevor Nash", "Anika Deshmukh", "Brandon Ruiz", "Kate Hollis", "Wes Tanaka"]
+    },
+    {
+      "objection": "Percentage-of-assets pricing rejected or attacked on structure, not amount",
+      "count": 8,
+      "subjects": ["Priya Raghavan", "Sofia Marchetti", "Marcus Webb", "Grace Lim", "Anika Deshmukh", "Brandon Ruiz", "Kate Hollis", "Wes Tanaka"]
+    },
+    {
+      "objection": "Basis points is an illegible unit; flat is a number I can say out loud",
+      "count": 7,
+      "subjects": ["Priya Raghavan", "Sofia Marchetti", "Marcus Webb", "Grace Lim", "Anika Deshmukh", "Brandon Ruiz", "Wes Tanaka"]
+    },
+    {
+      "objection": "No reachable tax surface, or complexity beyond automation's scope",
+      "count": 7,
+      "subjects": ["Daniel Okonkwo", "Grace Lim", "Trevor Nash", "Anika Deshmukh", "Brandon Ruiz", "Kate Hollis", "Wes Tanaka"]
+    },
+    {
+      "objection": "The product does not address the subject's own top-ranked problem",
+      "count": 7,
+      "subjects": ["Marcus Webb", "Grace Lim", "Trevor Nash", "Anika Deshmukh", "Brandon Ruiz", "Kate Hollis", "Wes Tanaka"]
+    },
+    {
+      "objection": "$96 flat signals low capability or non-viability",
+      "count": 6,
+      "subjects": ["Priya Raghavan", "Daniel Okonkwo", "Sofia Marchetti", "Marcus Webb", "Trevor Nash", "Kate Hollis"]
+    },
+    {
+      "objection": "The incumbent is good enough: what exactly am I fixing",
+      "count": 6,
+      "subjects": ["Priya Raghavan", "Daniel Okonkwo", "Anika Deshmukh", "Brandon Ruiz", "Kate Hollis", "Wes Tanaka"]
+    },
+    {
+      "objection": "A named accountable human is required or wanted",
+      "count": 6,
+      "subjects": ["Marcus Webb", "Grace Lim", "Trevor Nash", "Anika Deshmukh", "Brandon Ruiz", "Kate Hollis"]
+    },
+    {
+      "objection": "Institutional legitimacy and custody: who are they and what happens if they go under",
+      "count": 6,
+      "subjects": ["Priya Raghavan", "Sofia Marchetti", "Marcus Webb", "Trevor Nash", "Brandon Ruiz", "Kate Hollis"]
+    },
+    {
+      "objection": "Household co-approval threshold of roughly $300 to $500 turns the purchase into a meeting that does not happen",
+      "count": 5,
+      "subjects": ["Marcus Webb", "Trevor Nash", "Anika Deshmukh", "Brandon Ruiz", "Kate Hollis"]
+    },
+    {
+      "objection": "Peer or social proof required before purchase",
+      "count": 5,
+      "subjects": ["Priya Raghavan", "Sofia Marchetti", "Grace Lim", "Brandon Ruiz", "Kate Hollis"]
+    },
+    {
+      "objection": "Partial migration only: trial-sized deposit, shadow mode or a dashboard with a hole in it",
+      "count": 4,
+      "subjects": ["Priya Raghavan", "Sofia Marchetti", "Anika Deshmukh", "Kate Hollis"]
+    },
+    {
+      "objection": "The incentive-alignment pitch lands as nothing, or as a competitor badmouthing the incumbent",
+      "count": 4,
+      "subjects": ["Priya Raghavan", "Daniel Okonkwo", "Trevor Nash", "Brandon Ruiz"]
+    },
+    {
+      "objection": "The quoted 25 bps was computed on assets the provider cannot capture",
+      "count": 3,
+      "subjects": ["Sofia Marchetti", "Anika Deshmukh", "Kate Hollis"]
+    },
+    {
+      "objection": "The flat fee will be raised, tiered, or turned into a percentage later",
+      "count": 3,
+      "subjects": ["Priya Raghavan", "Daniel Okonkwo", "Sofia Marchetti"]
+    },
+    {
+      "objection": "Undisclosed revenue behind the flat fee: cash-sweep spread, securities lending, order flow or data",
+      "count": 3,
+      "subjects": ["Priya Raghavan", "Sofia Marchetti", "Wes Tanaka"]
+    },
+    {
+      "objection": "A flat fee is a cancellable card charge and therefore a churn risk a percentage does not have",
+      "count": 1,
+      "subjects": ["Daniel Okonkwo"]
+    },
+    {
+      "objection": "Methodology and rigour repel rather than reassure; a published methodology document is a disqualifier",
+      "count": 1,
+      "subjects": ["Grace Lim"]
+    }
+  ],
+  "revenue": {
+    "flat_96_total": 960,
+    "flat_96_total_realistic_converts_only": 576,
+    "bps_25_total_capturable": 2060,
+    "bps_25_total_stated": 7020,
+    "bps_25_total_realistic_accepters_only": 222,
+    "capturable_to_stated_ratio": 0.293,
+    "stated_assets_total": 2808000,
+    "capturable_assets_total": 824000,
+    "converts": 6,
+    "non_converts": 4
+  },
+  "key_quotes": [
+    {
+      "assumption": "ka-001",
+      "subject": "Daniel Okonkwo",
+      "quote": "I don't know that it's working. I know that I haven't received an email telling me it's broken. Which is not the same thing."
+    },
+    {
+      "assumption": "ka-002",
+      "subject": "Wes Tanaka",
+      "quote": "Nothing's stopped it. Nothing's started it. Those are different sentences and yours assumed the first one."
+    },
+    {
+      "assumption": "ka-003",
+      "subject": "Sofia Marchetti",
+      "quote": "Fees aren't a job I want handed off. Fees are the filter I use to decide who I'd hand anything to. You asked me what work I want done; fees aren't work, they're the price of the work. So: not the pain. Absolutely the veto."
+    },
+    {
+      "assumption": "ka-004",
+      "subject": "Brandon Ruiz",
+      "quote": "Ninety-six percent of my money lives somewhere the tax code doesn't reach until I'm sixty-five."
+    },
+    {
+      "assumption": "ka-005",
+      "subject": "Sofia Marchetti",
+      "quote": "It isn't the money. It's that you'd be charging me more each year for the same computation, and the mechanism by which your revenue grows is my savings rate. I would be paying you a royalty on my own discipline."
+    },
+    {
+      "assumption": "ka-006",
+      "subject": "Anika Deshmukh",
+      "quote": "I was completely willing. Zero security objection. I'd link everything of mine tomorrow, read-only, without reading the terms. And the product still fails, because the accounts that would make it worth having are not mine to give."
+    },
+    {
+      "assumption": "ka-007",
+      "subject": "Marcus Webb",
+      "quote": "I'm not the hard sell here, my wife is, and her first question won't be about fees. It'll be 'who are they and what happens if they go under.' If I can't answer that in two sentences at dinner, this doesn't happen, no matter how good the tax thing is."
+    }
+  ]
+}
